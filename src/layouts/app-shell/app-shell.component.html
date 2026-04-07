@@ -1,0 +1,29 @@
+<div class="app-layout">
+  <nav class="navbar">
+    <div class="navbar-cointaner">
+      <div class="navbar-brand">{{ labels.APP_NAME }}</div>
+      <div class="navbar-tabs">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-tab">
+          {{ labels.DASHBOARD }}
+        </a>
+        <a routerLink="/study/daily" routerLinkActive="active" class="nav-tab">
+          {{ labels.STUDY_DAILY }}
+        </a>
+        <a routerLink="/study/free" routerLinkActive="active" class="nav-tab">
+          {{ labels.STUDY_FREE }}
+        </a>
+      </div>
+      <div class="navbar-end">
+        <app-theme-toggle />
+      </div>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <main class="main-content">
+      <router-outlet />
+    </main>
+  </div>
+
+  <app-notification-toast />
+</div>

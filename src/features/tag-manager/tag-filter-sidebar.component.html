@@ -1,0 +1,20 @@
+<div class="sidebar-section">
+  <h3 class="sidebar-title">Теги</h3>
+  @if (tagRegistry.tags().length === 0) {
+    <p class="empty-tags">Нет тегов</p>
+  } @else {
+    <div class="tag-filter-row">
+      @for (tag of tagRegistry.tags(); track tag.id) {
+        <button
+          class="tag-filter-btn"
+          [class.active]="tag.isActive"
+          (click)="toggleTag(tag.name)"
+        >
+          <span class="tag-dot" [class]="getTagCssClass(tag.usageCount)"></span>
+          {{ tag.name }}
+          <span class="tag-count">{{ tag.usageCount }}</span>
+        </button>
+      }
+    </div>
+  }
+</div>

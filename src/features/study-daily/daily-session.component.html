@@ -1,0 +1,55 @@
+@if (!isComplete()) {
+  <div class="session-container">
+    <header class="session-header">
+      <div class="session-wrapper container">
+        <a class="btn-back" routerLink="/" (click)="exitSession()" aria-label="Вернуться на доску">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          <span class="btn-back-text">Доска</span>
+        </a>
+        <div class="session-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="(progress().answered / progress().total) * 100"></div>
+          </div>
+          <span class="progress-text">{{ progress().answered }} / {{ progress().total }}</span>
+        </div>
+      </div>
+    </header>
+
+    @if (currentCard(); as card) {
+      <div class="session-card">
+        <app-flashcard
+          [frontContent]="frontContent()"
+          [backContent]="backContent()"
+          [frontLabel]="card.isReversed ? 'Ответ' : 'Вопрос'"
+          [backLabel]="card.isReversed ? 'Вопрос' : 'Ответ'"
+          [isFlipped]="flipped()"
+          (flipped)="onCardFlipped($event)"
+        />
+      </div>
+
+      @if (flipped()) {
+        <div class="session-controls">
+          <app-study-controls (rate)="rate($event)" />
+        </div>
+      } @else {
+        <p class="flip-hint">Нажмите на карточку или пробел, чтобы перевернуть</p>
+      }
+    }
+  </div>
+} @else {
+  <div class="complete-container">
+    <div class="complete-card">
+      <span class="complete-icon">🎉</span>
+      <h2 class="complete-title">Сессия завершена!</h2>
+      <p class="complete-text">
+        Вы повторили <strong>{{ progress().total }}</strong> карточек
+      </p>
+      <div class="complete-actions">
+        <button class="btn-primary" (click)="exitSession()">Вернуться на доску</button>
+        <a class="btn-link" routerLink="/">На главную</a>
+      </div>
+    </div>
+  </div>
+}

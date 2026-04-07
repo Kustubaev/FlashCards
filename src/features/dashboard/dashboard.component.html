@@ -1,0 +1,65 @@
+<div class="dashboard-layout">
+  <aside class="dashboard-sidebar">
+    <app-stats-widget [stats]="stats()" />
+    <app-io-buttons />
+    <app-tag-filter-sidebar />
+  </aside>
+
+  <main class="dashboard-main">
+    <app-search-sort-bar
+      [searchQuery]="searchQuery()"
+      [sortMode]="sortMode()"
+      (searchChange)="onSearchChange($event)"
+      (sortChange)="onSortChange($event)"
+      (addCard)="onAddCard()"
+    />
+
+    @if (filteredCards().length === 0) {
+      <div class="empty-state">
+        @if (cards().length === 0) {
+          <p>Нет карточек. Создайте первую!</p>
+          <button class="btn btn-primary" (click)="onAddCard()">Добавить карточку</button>
+        } @else {
+          <p>Ничего не найдено</p>
+        }
+      </div>
+    } @else {
+      <div class="cards-grid">
+        @for (card of filteredCards(); track card.id) {
+          <app-card-item
+            [card]="card"
+            [isSelected]="selectionService.isSelected(card.id)"
+            (selected)="onCardSelected(card.id, $event)"
+            (edit)="onEditCard($event)"
+            (delete)="onDeleteRequest($event)"
+          />
+        }
+      </div>
+    }
+  </main>
+</div>
+
+<app-bulk-actions-bar
+  [selectedCount]="selectedCount()"
+  (addTag)="onBulkAddTag($event)"
+  (removeTag)="onBulkRemoveTag($event)"
+  (clearSelection)="onClearSelection()"
+/>
+
+@if (showEditor()) {
+  <app-card-editor
+    [card]="editingCard()"
+    (cardSaved)="onEditorSave($event)"
+    (cancelled)="onEditorCancel()"
+  />
+}
+
+<app-confirm-dialog
+  [isOpen]="showDeleteDialog()"
+  title="Удалить карточку?"
+  message="Вы уверены, что хотите удалить эту карточку? Это действие нельзя отменить."
+  confirmText="Удалить"
+  cancelText="Отмена"
+  (confirmed)="onConfirmDelete()"
+  (cancelled)="onCancelDelete()"
+/>

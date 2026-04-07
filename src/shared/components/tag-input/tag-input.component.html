@@ -1,0 +1,35 @@
+<div class="tag-input-wrapper" appClickOutside (appClickOutside)="onOutsideClick()">
+  <div class="tag-pills">
+    @for (tag of model(); track tag) {
+      <span class="tag-pill" [class]="getTagCssClass(0)">
+        {{ tag }}
+        <button type="button" class="tag-remove" (click)="removeTag(tag)" aria-label="Удалить тег {{ tag }}">
+          &times;
+        </button>
+      </span>
+    }
+  </div>
+  <input
+    type="text"
+    class="tag-input-field"
+    [placeholder]="model().length === 0 ? placeholder() : ''"
+    [value]="inputValue()"
+    (input)="onInputChange(); inputValue.set($any($event.target).value)"
+    (keydown)="handleKeydown($event)"
+    (focus)="onInputFocus()"
+  />
+  @if (showDropdown() && filteredSuggestions().length > 0) {
+    <div class="tag-dropdown">
+      @for (suggestion of filteredSuggestions(); track suggestion.name) {
+        <div
+          class="tag-dropdown-item"
+          (mousedown)="selectSuggestion(suggestion)"
+        >
+          <span class="tag-dot" [class]="getTagCssClass(suggestion.usageCount)"></span>
+          <span class="tag-name">{{ suggestion.name }}</span>
+          <span class="tag-count">{{ suggestion.usageCount }}</span>
+        </div>
+      }
+    </div>
+  }
+</div>

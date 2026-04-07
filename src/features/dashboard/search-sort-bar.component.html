@@ -1,0 +1,25 @@
+<div class="search-sort-bar">
+  <div class="search-wrapper">
+    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    </svg>
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Поиск карточек..."
+      [value]="searchQuery()"
+      (input)="onSearchChange($event)"
+    />
+  </div>
+  <select class="sort-select" [value]="sortMode()" (change)="onSortChange($event)">
+    @for (option of sortOptions; track option.value) {
+      <option [value]="option.value">{{ option.label }}</option>
+    }
+  </select>
+  <button class="btn-add" (click)="addCard.emit()" aria-label="Добавить карточку">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12h14"/>
+    </svg>
+    <span class="btn-label">Добавить</span>
+  </button>
+</div>

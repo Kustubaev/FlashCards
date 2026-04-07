@@ -1,12 +1,19 @@
-import { Component, signal } from '@angular/core';
+/**
+ * FlashCards Pro - Angular 19 Application
+ * Module: app/app
+ * Description: Root component with router outlet
+ */
+
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  template: `<router-outlet />`,
 })
 export class App {
-  protected readonly title = signal('Cards');
+  #theme = inject(ThemeService);
 }

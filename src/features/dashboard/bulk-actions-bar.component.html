@@ -1,0 +1,18 @@
+@if (selectedCount() > 0) {
+  <div class="bulk-bar">
+    <span class="bulk-count">Выбрано: {{ selectedCount() }}</span>
+    <div class="bulk-input-group">
+      <input
+        type="text"
+        class="bulk-tag-input"
+        placeholder="Тег..."
+        [value]="tagInput()"
+        (input)="tagInput.set($any($event.target).value)"
+        (keydown)="onKeydown($event)"
+      />
+      <button class="btn-bulk" (click)="onAddTag()">Добавить тег</button>
+      <button class="btn-bulk btn-bulk-remove" (click)="onRemoveTag()">Удалить тег</button>
+    </div>
+    <button class="btn-bulk btn-bulk-clear" (click)="clearSelection.emit()">Снять выделение</button>
+  </div>
+}

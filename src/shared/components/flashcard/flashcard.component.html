@@ -1,0 +1,17 @@
+<div class="fc-flashcard">
+<div class="flashcard-scene" (click)="flipped.emit(!isFlipped())">
+  <div class="flashcard" [class.flipped]="isFlipped()">
+    <div class="flashcard-face flashcard-front">
+      <div class="flashcard-label">{{ frontLabel() }}</div>
+      <div class="flashcard-wrapper">
+        <div class="flashcard-content flashcard-content-inner" [innerHTML]="renderedFront()"></div>
+      </div>
+    </div>
+    <div class="flashcard-face flashcard-back">
+      <div class="flashcard-label">{{ backLabel() }}</div>
+      <div class="flashcard-wrapper">
+       <div class="flashcard-content flashcard-content-inner" [innerHTML]="renderedBack()"></div>
+      </div>
+    </div>
+</div>
+</div>

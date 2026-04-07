@@ -1,0 +1,34 @@
+/**
+ * FlashCards Pro - Angular 19 Application
+ * Module: assets/styles/mixins
+ * Description: SCSS mixins for responsive breakpoints
+ */
+
+@mixin sm {
+  @media (min-width: 640px) { @content; }
+}
+
+@mixin md {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: 1024px) { @content; }
+}
+
+@mixin xl {
+  @media (min-width: 1280px) { @content; }
+}
+
+@mixin mobile {
+  @media (max-width: 767.98px) { @content; }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1023.98px) { @content; }
+}
+
+@mixin touch-target {
+  min-width: 44px;
+  min-height: 44px;
+}

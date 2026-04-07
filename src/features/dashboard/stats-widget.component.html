@@ -1,0 +1,18 @@
+<div class="stats-grid">
+  <div class="stat-card">
+    <span class="stat-value">{{ stats().total }}</span>
+    <span class="stat-label">Всего</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-value stat-learned">{{ stats().learned }}</span>
+    <span class="stat-label">Изучено</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-value stat-due">{{ stats().due }}</span>
+    <span class="stat-label">К повторению</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-value stat-streak">🔥 {{ stats().streak }}</span>
+    <span class="stat-label">Дней подряд</span>
+  </div>
+</div>

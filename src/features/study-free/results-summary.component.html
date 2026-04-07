@@ -1,0 +1,32 @@
+<div class="results-container">
+  <div class="results-card">
+    <span class="results-icon">📊</span>
+    <h2 class="results-title">Результаты сессии</h2>
+
+    <div class="results-stats">
+      <div class="stat-item">
+        <span class="stat-value">{{ results().total }}</span>
+        <span class="stat-label">Всего</span>
+      </div>
+      <div class="stat-item stat-correct">
+        <span class="stat-value">{{ results().correct }}</span>
+        <span class="stat-label">Знаю</span>
+      </div>
+      <div class="stat-item stat-incorrect">
+        <span class="stat-value">{{ results().incorrect }}</span>
+        <span class="stat-label">Не знаю</span>
+      </div>
+    </div>
+
+    <div class="results-percent">
+      <div class="percent-circle" [style.--percent]="results().correctPercent">
+        <span class="percent-value">{{ results().correctPercent }}%</span>
+      </div>
+    </div>
+
+    <div class="results-actions">
+      <button class="btn btn-secondary" (click)="changeFilters.emit()">Изменить фильтры</button>
+      <button class="btn btn-primary" (click)="retry.emit()">Повторить</button>
+    </div>
+  </div>
+</div>

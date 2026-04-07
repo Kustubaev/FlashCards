@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "Cards": {
+    "cards": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,6 +24,9 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/404.html",
               {
                 "glob": "**/*",
                 "input": "public"

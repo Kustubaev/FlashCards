@@ -1,0 +1,99 @@
+:host {
+	display: block;
+}
+
+.session-container {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: var(--bg-primary, #f9fafb);
+}
+
+.session-header {
+	background: var(--bg-card, #fff);
+	border-bottom: 1px solid var(--border-color, #e5e7eb);
+	margin-bottom: 4rem;
+}
+
+.session-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.btn-back {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.375rem;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--border-color, #e5e7eb);
+	background: var(--bg-card, #fff);
+	color: var(--text-primary);
+	cursor: pointer;
+	border-radius: var(--radius-md, 0.5rem);
+	text-decoration: none;
+	font-size: 0.875rem;
+	font-weight: 500;
+	transition: all 0.2s;
+
+	&:hover {
+		background: var(--bg-hover, #f3f4f6);
+		border-color: var(--accent, #6366f1);
+		color: var(--accent, #6366f1);
+	}
+}
+
+.btn-back-text {
+	@media (max-width: 480px) {
+		display: none;
+	}
+}
+
+.session-progress {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.progress-bar {
+	flex: 1;
+	height: 0.5rem;
+	background: var(--bg-secondary, #e5e7eb);
+	border-radius: var(--radius-full, 9999px);
+	overflow: hidden;
+}
+
+.progress-fill {
+	height: 100%;
+	background: var(--accent, #6366f1);
+	border-radius: var(--radius-full, 9999px);
+	transition: width 0.3s ease;
+}
+
+.progress-text {
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--text-secondary, #4b5563);
+	white-space: nowrap;
+}
+
+.session-card {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem 1rem 0.5rem;
+}
+
+.session-controls {
+	padding: 0 1rem 1.5rem;
+	margin-top: 0.5rem;
+}
+
+.flip-hint {
+	text-align: center;
+	color: var(--text-muted, #6b7280);
+	font-size: 0.875rem;
+	margin: 1rem 0;
+}
